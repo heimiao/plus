@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<script src="js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/scrollPic.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+		 scrollPic._init($(".scrollPic"));  
+		})
+	</script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="css/scrollPic.css"/>
+	<body>
+		<div id="scrollPic" class="scrollPic" dataSeting='{"width":1024,"height":400,"speed":400}'>
+			 <div class="scroll_btn pre_btn"> </div>
+			 <ul class="scrollList"> 
+			    <li><a href="#"><img src="img/1.jpg" /></a></li>
+			    <li><a href="#"><img src="img/2.jpg" /></a></li>
+			 	<li><a href="#"><img src="img/3.jpg" /></a></li>
+			 	<li><a href="#"><img src="img/4.jpg" /></a></li>
+			     <li><a href="#"><img src="img/5.jpg" /></a></li> 
+			 </ul>
+			  <div class="scroll_btn next_btn"></div>
+		</div>
+		<div style="margin-top:100px;">
+			11
+		</div>
+		<div id="scrollPics" class="scrollPic" dataSeting='{"width":1000,"height":300,"speed":400}' >
+			 <div class="scroll_btn pre_btn"> </div>
+			 <ul class="scrollList"> 
+			    <li><a href="#"><img src="img/1.jpg" /></a></li>
+			    <li><a href="#"><img src="img/2.jpg" /></a></li>
+			 	<li><a href="#"><img src="img/3.jpg" /></a></li>
+			 	<li><a href="#"><img src="img/4.jpg" /></a></li>
+			     <li><a href="#"><img src="img/5.jpg" /></a></li> 
+			 </ul>
+			  <div class="scroll_btn next_btn"></div>
+		</div>
+	</body>
+</html>

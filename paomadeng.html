@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title> </title>
+		<style type="text/css">
+		</style>
+	</head>
+	<script src="js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		;
+		(function($) {
+			var default_opt = {
+				"width": 300, //总宽度
+				"totalHeight": 300, //反向运动的高度
+				"speed":50, //滚动速度
+				"background": "black", //背景色
+				"fontSize": 12, //滚动字体的大小
+				"color": "#fff",
+				"lineHeight":14
+			}
+			var RunLight = function(opt) {
+				RunLight.setting = $.extend(default_opt, opt);
+				this.each(function(i, m) {
+					$(m).find("ul").css({
+						"width": RunLight.setting.width,
+						"height": RunLight.setting.totalHeight,
+						"background": RunLight.setting.background,
+						"margin:": 0,
+						"padding": 0,
+						"position": "relative",
+						"overflow": "hidden"
+					});
+					$(m).find("li").each(function(j, n) {
+						$(n).css({ 
+							"list-style-type": "none",
+							"color": RunLight.setting.color,
+							"position": "absolute",
+							"white-space:": "nowrap", 
+							"margin":"0",
+							"width":"200%", 
+							"fontSize":RunLight.setting.fontSize,
+							"top": RunLight.setting.lineHeight * j
+						}); 
+						if((++j)%2>0){
+							$(n).css({ 
+							"left": 0,
+							"background":"red"
+						    });  
+							RunLight.run(n,"left");
+						}else{
+							$(n).css({ 
+							"right": 0,
+							"background":"blue"
+						    }); 
+							RunLight.run(n,"right");
+						}
+					});
+				});
+			} 
+			RunLight.run = function(obj,point) {
+			  var sunWidth=RunLight.setting.width*2;
+			  var i=0,j=0; 
+		     var timeobj= setInterval(function(){
+		     	if(point=="left"){
+		     		if((sunWidth-RunLight.setting.width)>-($(obj).position().left)){
+		  	        $(obj).css({"left":-(i++)}); 
+		          }else{
+		          	i=0;
+		          	 $(obj).css({"left":i});
+		          }    
+		     	}else{ 
+		     		if(($(obj).position().left)<0){
+		  	       		 $(obj).css({"right":-(j++)});
+			          }else{
+			          	j=0;
+			          	 $(obj).css({"right":j});
+			          }   
+		     	} 
+		  	   },RunLight.setting.speed); 
+			}
+			$.fn.runLight = RunLight;
+		})($);
+		
+		$(function() {
+			$(".marquee").runLight({
+				"speed":100,
+				"width":150,
+				"totalHeight":150,
+				"color":"#fff"
+			});
+		})
+	</script>
+	<body>
+		<div class="marquee">
+			<ul>
+				<li>我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行一行哈我滴一行一行哈我滴一行一行哈我滴一行</li>
+				<li>我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行一行哈我滴一行一行哈我滴一行一行哈我滴一行</li>
+				<li>我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行一行哈我滴一行一行哈我滴一行一行哈我滴一行</li>
+				<li>我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行一行哈我滴一行一行哈我滴一行一行哈我滴一行</li>
+				<li>我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行一行哈我滴一行一行哈我滴一行一行哈我滴一行</li>
+				<li>我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行一行哈我滴一行一行哈我滴一行一行哈我滴一行</li>
+				<li>我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行一行哈我滴一行一行哈我滴一行一行哈我滴一行</li>
+				<li>我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行一行哈我滴一行一行哈我滴一行一行哈我滴一行</li>
+				<li>我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行一行哈我滴一行一行哈我滴一行一行哈我滴一行</li>
+				<li>我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行一行哈我滴一行一行哈我滴一行一行哈我滴一行</li>
+				<li>我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行一行哈我滴一行一行哈我滴一行一行哈我滴一行</li>
+				<li>我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行哈我滴一行一行哈我滴一行一行哈我滴一行一行哈我滴一行</li>
+			</ul>
+		</div>
+		<div id="scrollobj" style="white-space:nowrap;overflow:hidden;width:300px;">这里是要滚动的内容</div> 
+		<script language="javascript" type="text/javascript">
+			function scroll(obj) {
+				var tmp = (obj.scrollLeft) ++; 
+				//当滚动条到达右边顶端时
+				if (obj.scrollLeft == tmp) obj.innerHTML += obj.innerHTML;
+				//当滚动条滚动了初始内容的宽度时滚动条回到最左端
+				if (obj.scrollLeft >= obj.firstChild.offsetWidth) obj.scrollLeft = 0;
+			}  
+			setInterval("scroll(document.getElementById('scrollobj'))", 20);
+			$(function(){ 
+				document.getElementById("aaa").scrollLeft=5;
+			})
+		</script>
+		  <div id="aaa" style="white-space:nowrap;overflow:hidden;width:500px;border:1px solid red;" >这里是要滚动的内容</div> 
+		
+		
+		
+		<marquee direction=’left’ loop=2 width=960 height=30 scrollamount=30 scrolldelay=300 onmouseover="this.stop()" onmouseover="this.start()">谷歌恶心的滚动</marquee>
+	</body>
+</html>

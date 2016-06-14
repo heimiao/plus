@@ -1,0 +1,46 @@
+.scrollPic {
+	width: 1024px;
+	height: 500px;
+	position: relative;
+	margin: 0 auto;
+}
+.scroll_btn {
+	width: 100px;
+	height: 500px;
+	position: absolute;
+	top: 0px;
+	cursor: pointer;
+	z-index: 100;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+.pre_btn {
+	left: 0px;
+	background: url(../img/btn_l.png) 50% 50% no-repeat;
+}
+.next_btn {
+	right: 0px;
+	background: url(../img/btn_r.png) 50% 50% no-repeat;
+}
+.scrollList {
+	padding: 0;
+	margin: 0;
+	width: 1024px;
+	height: 500px;
+}
+.scrollList,
+.scrollList li {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	height: 100%;
+}
+.scrollList li a,
+.scrollList li a img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
